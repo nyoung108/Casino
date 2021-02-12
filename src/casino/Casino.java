@@ -7,7 +7,7 @@ public class Casino {
 
     public static void main(String[] args) {
 //I had a go at file handling but I struggled and left it too late so I will try and add it over half term
-        int coins = 100;
+        int coins = 1000;
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to my Casino");
 
@@ -65,7 +65,7 @@ public class Casino {
             int selected = input.nextInt();
             switch (selected) {
                 case 1:
-                    while (coins >= 100) {
+                    if (coins >= 100) {
                         String[] quotes = new String[8];
                         quotes[0] = "Hello there - General Kenobi";
                         quotes[1] = "I am the senate - Emperor Palpatine";
