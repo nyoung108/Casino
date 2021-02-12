@@ -3,23 +3,21 @@ package casino;
 import java.util.Scanner;
 import java.util.Random;
 
-
 public class Casino {
 
-    
-
     public static void main(String[] args) {
-
+//I had a go at file handling but I struggled and left it too late so I will try and add it over half term
         int coins = 100;
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to my Casino");
 
         boolean valid = true;
-        Slot_machine slot_machine = new Slot_machine();
-        Roulette roulette = new Roulette();
-        BlackJack blackJack = new BlackJack();
+
         while (valid) {
             try {
+                Slot_machine slot_machine = new Slot_machine();
+                Roulette roulette = new Roulette();
+                BlackJack blackJack = new BlackJack();
                 System.out.println("You have " + coins + " coins");
                 System.out.println("If you would like to play the Slot machine enter 1");
                 System.out.println("If you would like to play the Roulette enter 2");
@@ -44,6 +42,10 @@ public class Casino {
                     default:
                         valid = false;
                 }
+                if (coins == 0) {
+                    System.out.println("The house always wins. You are out of coins");
+                    valid = false;
+                }
             } catch (Exception e) {
                 System.out.println(e);
                 input.next();
@@ -55,10 +57,11 @@ public class Casino {
         Scanner input = new Scanner(System.in);
         Random rand = new Random();
         try {
-            System.out.println("You have "+coins+" coins");
-            System.out.println("If you would like a Star Wars scene for 100 coins, enter 1");
+            System.out.println("You have " + coins + " coins");
+            System.out.println("If you would like a Star Wars quote for 100 coins, enter 1");
+            System.out.println("If you would like an ASCII bear for 200 coins, enter 2");
             System.out.println("If you would like to exit, enter 0");
-            
+
             int selected = input.nextInt();
             switch (selected) {
                 case 1:
@@ -75,6 +78,34 @@ public class Casino {
                         int random = rand.nextInt(8);
                         System.out.println(quotes[random]);
                         coins = coins - 100;
+                    }
+                    if (coins < 100) {
+                        System.out.println("Sorry you dont have enough coins");
+                    }
+                    break;
+                case 2:
+                    while (coins >= 200) {
+                        System.out.println(":\"'._..---.._.'\";\n"
+                                + "    `.             .'\n"
+                                + "    .'    ^   ^    `.\n"
+                                + "   :      0   0      :                 __....._\n"
+                                + "   :     _.-0-._     :---'\"\"'\"-....--'\"        '.\n"
+                                + "    :  .'   :   `.  :                          `,`.\n"
+                                + "     `.: '--'--' :.'                             ; ;\n"
+                                + "      : `._`-'_.'                                ;.'\n"
+                                + "      `.   '\"'                                   ;\n"
+                                + "       `.               '                        ;\n"
+                                + "        `.     `        :           `            ;\n"
+                                + "         .`.    ;       ;           :           ;\n"
+                                + "       .'    `-.'      ;            :          ;`.\n"
+                                + "   __.'      .'      .'              :        ;   `.\n"
+                                + " .'      __.'      .'`--..__      _._.'      ;      ;\n"
+                                + " `......'        .'         `'\"\"'`.'        ;......-'\n"
+                                + "       `.......-'                 `........'");
+                        coins = coins - 200;
+                    }
+                    if (coins < 200) {
+                        System.out.println("Sorry you dont have enough coins");
                     }
                     break;
                 default:

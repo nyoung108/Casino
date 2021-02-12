@@ -39,22 +39,29 @@ public class Slot_machine {
             if ((a == b) && (b == c)) {
                 coins = coins + (pool * 3);
                 System.out.println("You matched all three!");
+                System.out.println("You have " + coins + " coins");
 
             } else if ((a == b) || (a == c) || (b == c)) {
                 coins = coins + (pool * 2);
                 System.out.println("You matched two numbers!");
+                System.out.println("You have " + coins + " coins");
 
             } else {
                 System.out.println("You lost");
+                System.out.println("You have " + coins + " coins");
 
             }
             try {
+                if (coins == 0) {
+                    
+                    return coins;
+                }
                 System.out.println("If You would like to play again enter 1");
                 System.out.println("If You would like to exit enter 0");
                 int exit = input.nextInt();
 
                 if (exit == 0) {
-                    break;
+                    valid=false;
                 }
             } catch (Exception e) {
                 System.out.println(e);

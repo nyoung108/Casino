@@ -9,6 +9,10 @@ public class BlackJack {
         boolean play = true;
         while (play) {
             try {
+                 if (coins <= 0) {
+                    play=false;
+                    return coins;
+                }
                 System.out.println();
                 System.out.println("You have " + coins + " coins");
                 System.out.println();
@@ -61,12 +65,16 @@ public class BlackJack {
                     System.out.print("Your total was " + playerTotal);
                     System.out.println(" and the dealer's total was " + dealerTotal);
                 }
-
+                if(coins<0){
+                    coins=0;
+                }
+                if (coins>0){
                 System.out.println("If you would like to play again enter 1");
                 System.out.println("If you would like exit enter 0");
                 int selected = input.nextInt();
                 if (selected == 0) {
                     play = false;
+                }
                 }
             } catch (Exception e) {
                 System.out.println(e);

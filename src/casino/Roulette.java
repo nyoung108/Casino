@@ -11,6 +11,10 @@ public class Roulette {
         boolean valid = true;
         while (valid) {
             try {
+                if (coins == 0) {
+                    valid = false;
+                    break;
+                }
                 System.out.println();
                 System.out.println("You have " + coins + " coins");
                 System.out.println();
@@ -25,16 +29,16 @@ public class Roulette {
                         valid = false;
                         break;
                     case 1:
-                        OddorEven(coins);
+                        coins = OddorEven(coins);
                         break;
                     case 2:
-                        BlackOrRed(coins);
+                        coins = BlackOrRed(coins);
                         break;
                     case 3:
-                        Number(coins);
+                        coins = Number(coins);
                         break;
                     case 4:
-                        Green(coins);
+                        coins = Green(coins);
                         break;
                 }
             } catch (Exception e) {
@@ -57,7 +61,7 @@ public class Roulette {
 
             System.out.println("How many coins would you like to enter?");
             int pool = input.nextInt();
-            while(coins-pool<0){
+            while (coins - pool < 0) {
                 System.out.println("You don't have enough coins");
                 System.out.println("How many coins would you like to enter?");
                 pool = input.nextInt();
@@ -74,18 +78,22 @@ public class Roulette {
                 if ((landed == 0) && (bet == 2)) {
                     System.out.println("You win! The number rolled was " + roll);
                     coins = coins + pool;
+                    System.out.println("You have " + coins + " coins");
                 }
                 if ((landed == 1) && (bet == 1)) {
                     System.out.println("You win! The number rolled was " + roll);
                     coins = coins + pool;
+                    System.out.println("You have " + coins + " coins");
 
                 } else {
                     System.out.println("You lost! The number rolled was " + roll);
                     coins = coins - pool;
+                    System.out.println("You have " + coins + " coins");
                 }
             } else {
                 System.out.println("You lost! The number rolled was " + roll);
                 coins = coins - pool;
+                System.out.println("You have " + coins + " coins");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -108,7 +116,7 @@ public class Roulette {
             System.out.println();
             System.out.println("How many coins would you like to enter?");
             int pool = input.nextInt();
-            while(coins-pool<0){
+            while (coins - pool < 0) {
                 System.out.println("You don't have enough coins");
                 System.out.println("How many coins would you like to enter?");
                 pool = input.nextInt();
@@ -134,9 +142,11 @@ public class Roulette {
             if (bet == colour) {
                 System.out.println("You win! The colour rolled was " + rolledColour);
                 coins = coins + pool;
+                System.out.println("You have " + coins + " coins");
             } else {
                 System.out.println("You lost! The colour was " + rolledColour);
                 coins = coins - pool;
+                System.out.println("You have " + coins + " coins");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -154,11 +164,15 @@ public class Roulette {
         try {
             System.out.println("What number do you want to bet on");
             int bet = input.nextInt();
-
+            while (bet > 37 || bet < 0) {
+                System.out.println("This is not a valid number");
+                System.out.println("What number do you want to bet on");
+                bet = input.nextInt();
+            }
             System.out.println();
             System.out.println("How many coins would you like to enter?");
             int pool = input.nextInt();
-            while(coins-pool<0){
+            while (coins - pool < 0) {
                 System.out.println("You don't have enough coins");
                 System.out.println("How many coins would you like to enter?");
                 pool = input.nextInt();
@@ -167,9 +181,11 @@ public class Roulette {
             if (roll == bet) {
                 System.out.println("You win! The number rolled was " + roll);
                 coins = coins + (pool * 10);
+                System.out.println("You have " + coins + " coins");
             } else {
                 System.out.println("You lost! The number rolled was " + roll);
                 coins = coins - pool;
+                System.out.println("You have " + coins + " coins");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -186,7 +202,7 @@ public class Roulette {
             System.out.println();
             System.out.println("How many coins would you like to enter?");
             int pool = input.nextInt();
-            while(coins-pool<0){
+            while (coins - pool < 0) {
                 System.out.println("You don't have enough coins");
                 System.out.println("How many coins would you like to enter?");
                 pool = input.nextInt();
@@ -195,9 +211,11 @@ public class Roulette {
             if (roll == 0) {
                 System.out.println("You win! The colour rolled was green");
                 coins = coins + (pool * 10);
+                System.out.println("You have " + coins + " coins");
             } else {
                 System.out.println("You lost! The coulor rolled was not green");
                 coins = coins - pool;
+                System.out.println("You have " + coins + " coins");
             }
         } catch (Exception e) {
             System.out.println(e);
