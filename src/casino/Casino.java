@@ -7,7 +7,7 @@ public class Casino {
 
     public static void main(String[] args) {
 //I had a go at file handling but I struggled and left it too late so I will try and add it over half term
-        int coins = 1000;
+        int coins = 100;
         Scanner input = new Scanner(System.in);
         System.out.println("Welcome to my Casino");
 
@@ -84,7 +84,7 @@ public class Casino {
                     }
                     break;
                 case 2:
-                    while (coins >= 200) {
+                    if (coins >= 200) {
                         System.out.println(":\"'._..---.._.'\";\n"
                                 + "    `.             .'\n"
                                 + "    .'    ^   ^    `.\n"
